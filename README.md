@@ -14,9 +14,6 @@ Zig, with a generational, concurrent GC. It's being designed now, and every deci
 show_with_text("Hello, World!")
 ```
 
-The old Fale, a Zig VM that beat PUC Lua 5.5.1 on 7 of 11 benchmarks, is now
-[`Soclets/Fale-legacy`](https://github.com/Soclets/Fale-legacy).
-
 ## Licences
 
 - [`LICENSE`](LICENSE): Apache-2.0 WITH LLVM-exception, for the code. Programs you compile owe nothing.
