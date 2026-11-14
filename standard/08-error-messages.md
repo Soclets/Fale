@@ -7,7 +7,27 @@ An error's first words say what happened to the program (D43):
 - `Refused before running`: the checker found it, and the program never starts.
 - `Stopped while running`: the running program hit it, and stops there.
 
-## 8.2 Layout *(proposal)*
+## 8.2 Layout
+
+The kind and the place come first, written twice: `file:line:column` for tools, then `line N column M` for people,
+with the column counted in graphemes. Then the source line, with a `^` run under exactly the part in question. Then
+one label per line (D48):
+
+- `what:` what's wrong. It stays even when there's a fix.
+- `why:` the rule, in plain words, never a decision number.
+- `context:` the facts at that moment (D45).
+- `because:` earlier lines that caused it, each with its own place and source line.
+- `fix:` every real fix, never a guess.
+
+```
+Refused before running: main.fale:1:13, line 1 column 13
+ 1 | #c: Float = 0.1
+   |             ^^^
+ what: 0.1 can't be stored exactly as a Float
+ why:  an approximate Float is written with ~ in front
+ fix:  `~0.1`, or make it a `Decimal`
+```
+
 
 ```
 Stopped while running: main.fale:4:15, line 4 column 15
@@ -43,4 +63,4 @@ what:    `#big + 1` is too big for a Whole
 
 *(Empty so far: templates are added as each error is designed.)*
 
-Not decided yet: the rest of this layout, file extensions and exit codes (chapter 9).
+Not decided yet: file extensions, exit codes, and the kinds for unbuilt or undesigned parts (chapter 9).

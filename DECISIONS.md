@@ -598,6 +598,25 @@ byte for byte without either reading the other's code (D37), and the owner can r
 show in one place. The owner asked "should we make dynamic source code? ... Like, `variable name` in error actually
 shows the variable name, etc"; Claude proposed the catalogue; the owner chose: "yea". (Owner, 2026-11-14)
 
+**D48. The error layout.** The kind and the place come first, written twice: `main.fale:1:13` for tools, then
+`line 1 column 13` for people, with the column counted in graphemes. Then the source line, with a `^` run under
+exactly the part in question. Then one label per line: `what:` says what's wrong, and stays even when there's a fix;
+`why:` gives the rule in plain words, never a decision number; `context:` gives the facts (D45); `because:` points at
+earlier lines that caused it, each with its own place and source line; `fix:` lists every real fix, never a guess.
+
+```
+Refused before running: main.fale:1:13, line 1 column 13
+ 1 | #c: Float = 0.1
+   |             ^^^
+ what: 0.1 can't be stored exactly as a Float
+ why:  an approximate Float is written with ~ in front
+ fix:  `~0.1`, or make it a `Decimal`
+```
+
+It's Cyborg's and Jernal's layout (from Radium), with three beginner changes: no decision numbers ("Yo, chill with
+decision numbers in there"), `what:` kept beside `fix:`, and more than one fix allowed, as long as each is real. The
+owner chose: "yes". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -615,6 +634,6 @@ shows the variable name, etc"; Claude proposed the catalogue; the owner chose: "
 - Sized number types beside `Whole`, like `i32` (D30): which ones, and how they're spelled.
 - Whether `match` should give a value later (D40).
 - What a doc comment (`///`, D33) attaches to.
-- The rest of the error layout (D43): the place twice, a `^` run, `what:`, `why:` in plain words with no decision
-  numbers, `context:` (D45), `because:`, and `fix:` with every real fix. Also exit codes, `NotDesignedYet`, `NotBuiltYet` and the VM's own failures.
+- Exit codes, `NotDesignedYet`, `NotBuiltYet` and the VM's own failures (D43). The file extension (`.fale` in
+  examples).
 - What happens when sized types like `i32` overflow (D30, D44).

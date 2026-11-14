@@ -37,7 +37,6 @@ The same list as "Open" in [`DECISIONS.md`](../DECISIONS.md), by chapter.
 
 ## Error messages (chapter 8)
 
-- The rest of the layout: the place twice, a `^` run, `what:`, `why:` in plain words with no decision numbers,
-  `because:`, and `fix:` with every real fix.
+- The file extension (`.fale` in examples).
 - Exit codes, `NotDesignedYet`, `NotBuiltYet` and the VM's own failures.
 - What happens when sized types like `i32` overflow.
