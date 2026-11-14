@@ -1,0 +1,43 @@
+# 1. Syntax
+
+## 1.1 Blocks
+
+A line that opens a block ends with `:`. The block closes with `end` and the kind of block it was: `end if`,
+`end for`, `end procedure`, `end one_of` (D13). Indentation inside a block is required, so code always looks the way
+it's structured. Tabs or spaces, and how many, aren't decided (chapter 8).
+
+```
+if #health at_least 500:
+    show_in_text("Healthy")
+end if
+```
+
+Inside a procedure, the first lines may describe it before any code: `labels`, then `defaults` (D18).
+
+## 1.2 Names
+
+- A name starts with `#`: `#name`, `#health`, `#people` (D1). `$` reads as dollars to normal people.
+- Types start with a capital letter: `Whole`, `Text`, `List of Text`, and the program's own, like `Order` (D3, D31).
+- Keywords, procedures and plain values (like `true`, `nothing`, `before`) are lowercase, with `_` between words:
+  `show_in_text`, `at_least`, `one_of`, `max_length` (D5, D21, D31).
+- A name is its own description if three everyday words or fewer can say what it does; otherwise it's the standard
+  learned word (D29).
+
+## 1.3 Brackets
+
+- `( )` runs a procedure: `greet("Tankun")` (D9). In maths it also groups: `(2 + 3) * 4` *(proposal)*.
+- `[ ]` picks a position, `#people[position: 1]` (D4); holds a list, `["Tankun", "Mult"]`, or pairs,
+  `["Tankun": 1000]` *(proposal)* (D3); and holds a procedure's `labels` and `defaults` (D18).
+
+## 1.4 Text
+
+Text inside `"..."` is always literal: nothing inside it is replaced (D7). Text and values are joined by writing them
+side by side:
+
+```
+show_in_text("Hello, " #name)
+```
+
+## 1.5 Comments
+
+The examples in this standard use `//` for comments *(proposal)*.
