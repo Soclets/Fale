@@ -24,4 +24,10 @@ release builds: the GC needs thorough tests (D10).
 ## 7.4 Inside and outside
 
 Base Fale only computes. Anything that touches the outside world, including the terminal, files, time, randomness,
-the network and the program's surroundings, comes from the standard library and has to be brought in (D49).
+the network and the program's surroundings, comes from the standard library, and only what the program's manifest allows can be used (D49, D50). Using
+something the manifest doesn't allow is refused before running.
+
+## 7.5 Embedding
+
+Fale runs standalone or embedded (D51). Standalone, the `fale` program grants what the manifest lists. Embedded, the
+host grants its own abilities. The VM keeps no global state, so several scripts can run side by side.

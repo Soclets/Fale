@@ -29,7 +29,9 @@ The same list as "Open" in [`DECISIONS.md`](../DECISIONS.md), by chapter.
 
 ## Procedures (chapter 5)
 
-- How a program brings in parts of the standard library, and what each part holds (D49).
+- The manifest's name and format, the list of permissions, and whether a package's permissions show in the
+  program's manifest (D50).
+- The VM's API for hosts (D51).
 
 - Keep `function` for checked-pure procedures later, or drop the word (D8)?
 

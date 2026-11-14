@@ -626,6 +626,22 @@ brought in isn't designed yet. The owner proposed it: "I think it should be some
 touch anything external"; Claude asked whether `show_in_text` is the one exception; the owner chose: "no exception".
 (Owner, 2026-11-14)
 
+**D50. The manifest is the program's permission list.** What a program may touch outside itself (D49) is listed in
+its manifest, not in `use` lines in the code, so the code stays straight to its idea. Anyone asking "what can this
+touch?" reads one short file, like a phone app's permissions. A new project's manifest is made for it with the
+terminal already allowed, so a first program is one line of code. Using something the manifest doesn't allow is
+refused before running, with the fix pointing at the manifest. Jernal also keeps all bringing-in in its manifest
+(Jernal D59, D114). Claude had proposed `use terminal` at the top of the file; the owner said "Idk about that instead
+of manifest, man. Like, it's supposed to be straight to the point, to the idea of the code. And you want it to be
+sitting there importing stuff?". (Owner, 2026-11-14)
+
+**D51. Fale is embeddable as well as standalone.** Since base Fale touches nothing outside the program (D49), a host
+decides what a script may touch: standalone, the `fale` program grants what the manifest lists; embedded, a game or
+app grants its own abilities (say `game_world`, and no `files`), like Lua's host-opened libraries. The VM keeps no
+global state, so several scripts can run side by side, and offers a clean API for hosts. The owner asked "Okay, so
+your idea is for Fale to become an embeddable, contained scripting language?"; Claude said it falls out of D49 and
+asked whether to aim for it; the owner chose: "Seems good". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -646,4 +662,6 @@ touch anything external"; Claude asked whether `show_in_text` is the one excepti
 - Exit codes, `NotDesignedYet`, `NotBuiltYet` and the VM's own failures (D43). The file extension (`.fale` in
   examples).
 - What happens when sized types like `i32` overflow (D30, D44).
-- How a program brings in parts of the standard library (D49), and what each part holds.
+- The manifest's name and format, and the list of permissions (D50).
+- Whether bringing in a package that touches files needs the program's own manifest to allow files too (D50).
+- The VM's API for hosts (D51).
