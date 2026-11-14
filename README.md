@@ -11,7 +11,7 @@ Zig, with a generational, concurrent GC. It's being designed now, and every deci
 
 ## Hello, World!
 ```
-show_with_text("Hello, World!")
+show_in_text("Hello, World!")
 ```
 
 ## Licences
