@@ -46,3 +46,7 @@ The same list as "Open" in [`DECISIONS.md`](../DECISIONS.md), by chapter.
 - The file extension (`.fale` in examples).
 - Exit codes, `NotDesignedYet`, `NotBuiltYet` and the VM's own failures.
 - What happens when sized types like `i32` overflow.
+
+## Memory and the VM (chapter 7)
+
+- Threads and running things in parallel.

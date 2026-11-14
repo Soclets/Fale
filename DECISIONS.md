@@ -732,6 +732,15 @@ Random rounding was left out because ordinary programs don't need it and, under 
 not because it isn't reproducible: Fale never promised reproducibility (D3). The owner asked "More?", then "Wait, then
 why isn't HashMap banned? Hm?", then chose: "yea". (Owner, 2026-11-14)
 
+**D60. The whole standard library is written in Zig.** Not just the parts that touch the outside (the abilities a
+host grants, D49, D51) but the friendly layer too: `read_whole`, `split`, `sum` and the rest. A standard library
+partly written in Fale would be slow in loops, a common complaint about parts of Python's, and couldn't exist until
+the VM ran procedures, failures and conversion. It also keeps the oracle useful: the oracle writes its own OCaml copy,
+so the standard library is cross-checked like everything else, rather than one Fale copy whose bugs both would share
+(D37). Testing the language on itself comes from example programs and the tests instead. Claude first proposed a
+thin Zig layer with Fale on top, then corrected its own oracle argument; the owner asked "Why not just all of it in
+Zig?" and "How do we escape that for Fale?", then chose: "Seems good". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -756,3 +765,4 @@ why isn't HashMap banned? Hm?", then chose: "yea". (Owner, 2026-11-14)
 - The VM's API for hosts (D51).
 - Conversion (D57): the full table of which conversions exist and their kind, and the failure names.
 - How Fale loads and calls native libraries, and the manifest permission for them (D58).
+- Threads and running things in parallel. The concurrent GC (D20) is built for it.

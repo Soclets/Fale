@@ -28,7 +28,11 @@ the network and the program's surroundings, comes from the standard library, and
 is written in [SIML](https://github.com/Soclets/SIML) (D52, D53). Using
 something the manifest doesn't allow is refused before running.
 
-## 7.5 Embedding
+## 7.5 The standard library
+
+The whole standard library is written in Zig, inside the VM (D60). The oracle has its own copy in OCaml.
+
+## 7.6 Embedding
 
 Fale runs standalone or embedded (D51). Standalone, the `fale` program grants what the manifest lists. Embedded, the
 host grants its own abilities. The VM keeps no global state, so several scripts can run side by side.
