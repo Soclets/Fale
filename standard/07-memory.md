@@ -36,3 +36,9 @@ The whole standard library is written in Zig, inside the VM (D60). The oracle ha
 
 Fale runs standalone or embedded (D51). Standalone, the `fale` program grants what the manifest lists. Embedded, the
 host grants its own abilities. The VM keeps no global state, so several scripts can run side by side.
+
+## 7.7 Build modes
+
+`fale run main.fale` checks a program and runs it with every check on; that's the default (D61). Beside it: a mode that
+spends longer optimizing, with the same checks and results; a mode without runtime checks, which an embedding host can
+ban; and `fale check`, which checks without running. Names and details are in chapter 9.

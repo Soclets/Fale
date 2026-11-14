@@ -50,3 +50,5 @@ The same list as "Open" in [`DECISIONS.md`](../DECISIONS.md), by chapter.
 ## Memory and the VM (chapter 7)
 
 - Threads and running things in parallel.
+- Build modes (D61): names, how one is picked, and what the unchecked mode does with overflow, positions and
+  division by zero.

@@ -741,6 +741,17 @@ so the standard library is cross-checked like everything else, rather than one F
 thin Zig layer with Fale on top, then corrected its own oracle argument; the owner asked "Why not just all of it in
 Zig?" and "How do we escape that for Fale?", then chose: "Seems good". (Owner, 2026-11-14)
 
+**D61. Build modes: a checked default, and precise modes beside it, including one without runtime checks that hosts
+can ban.** Following D30, a beginner never picks a mode: `fale run main.fale` checks the program and runs it with every
+check on. Beside it, the precise options: a mode that spends longer optimizing the bytecode, with the same checks and
+the same results; a mode that turns runtime checks off for speed, where D44's overflow error no longer applies; and
+`fale check`, which checks without running. An embedding host (D51) can ban the unchecked mode, since without checks a
+script could read outside its own memory and break the host. A GC torture switch, collecting on every allocation, is
+for testing the VM, not for users. The modes' names, how one is picked, and exactly what the unchecked mode does with
+overflow, positions and division by zero aren't decided. Jernal's modes (Jernal D69 to D72) were the starting point.
+The owner said "You choose build mode, bro. It's progressive, remember? So, we have a default", then, asked about a
+mode without checks: "And yes, I do. But hosts can ban it". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -766,3 +777,5 @@ Zig?" and "How do we escape that for Fale?", then chose: "Seems good". (Owner, 2
 - Conversion (D57): the full table of which conversions exist and their kind, and the failure names.
 - How Fale loads and calls native libraries, and the manifest permission for them (D58).
 - Threads and running things in parallel. The concurrent GC (D20) is built for it.
+- Build modes (D61): their names, how a program picks one, and what the unchecked mode does with overflow, positions
+  and division by zero.
