@@ -36,10 +36,23 @@ else:
 end if
 ```
 
-`match`, for handling every case of a `one_of` or `tagged_union`, is the precise layer beside `if` (D30). It isn't
-designed yet.
+## 4.3 `match`
 
-## 4.3 Loops
+`match` handles every case of a `one_of` or `tagged_union`. It's the precise layer beside `if` (D30, D40):
+
+```
+match #order:
+    case before, same:
+        show_in_text("Not after")
+    case after:
+        show_in_text("After")
+end match
+```
+
+A missed case is refused, and the error lists the missing ones. There is no catch-all: several cases can share one
+`case` line. `match` is a statement, and gives no value.
+
+## 4.4 Loops
 
 Five loops, each saying what it does (D16):
 
@@ -65,7 +78,7 @@ forever:                            // repeat until told to stop
 end forever
 ```
 
-## 4.4 `break`
+## 4.5 `break`
 
 `break` leaves the innermost loop (D17). There is no `continue` and no `skip`: an item is skipped by wrapping the work
 in an `if`, so the skipped path shows as structure.

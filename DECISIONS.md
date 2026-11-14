@@ -495,6 +495,24 @@ traces yet. Their names are full words, one per idea, in Fale's own words over t
 Jernal's rules. The owner asked "What are the rules for writing host source code?"; Claude proposed adding Jernal's
 Tracing and Naming; the owner chose: "yes". (Owner, 2026-11-14)
 
+**D40. `match` names every case, and several cases can share a line.** `match` is the precise layer beside `if`
+(D30), shaped like `otherwise:` (D22), with `case` lines:
+
+```
+match #order:
+    case before, same:
+        show_in_text("Not after")
+    case after:
+        show_in_text("After")
+end match
+```
+
+A missed case is refused, and the error lists the missing ones, so adding a case later forces every `match` to handle
+it. There is no catch-all: several cases on one line, `case before, same:`, give the brevity while still naming every
+case. For now `match` is a statement and gives no value, since nothing has shown it needs one. Cyborg's design session
+advised multi-case lines over a catch-all (Cyborg never designed them) and said the shared shape with failure
+handling made both easier to learn. Claude proposed it; the owner chose: "yea". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -510,7 +528,6 @@ Tracing and Naming; the owner chose: "yes". (Owner, 2026-11-14)
   (`List of Text`, `else if`, `end if`), underscores when the words only mean something together (`at_least`,
   `one_of`). `for each` breaks it, since `for` never appears alone.
 - Sized number types beside `Whole`, like `i32` (D30): which ones, and how they're spelled.
-- `match` (D30, D31): its spelling, whether a missed case is refused (Cyborg refuses it), whether it gives a value,
-  and whether it has a catch-all.
+- Whether `match` should give a value later (D40).
 - How a `tagged_union` case's data is read, and how a case with data is built.
 - What a doc comment (`///`, D33) attaches to.

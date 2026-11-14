@@ -25,8 +25,7 @@ The same list as "Open" in [`DECISIONS.md`](../DECISIONS.md), by chapter.
 
 - What `<` and `>` do with `Text`. Waits on procedures. The owner's sketch:
   `compare_text("Zebra", "apple", format: grapheme, case: sensitive)`, giving an `Order` (D31).
-- `match` (D30): its spelling, whether a missed case is refused, whether it gives a value, and whether it has a
-  catch-all.
+- Whether `match` should give a value later (D40).
 - Named loops, like Jernal's `break outer` (D17).
 
 ## Procedures (chapter 5)
