@@ -546,6 +546,23 @@ swapped for a value, and every field is labelled, so `failed[3]` is refused, lik
 
 Claude proposed it, following D36 (`[ ]` holds) and D41; the owner chose: "yea". (Owner, 2026-11-14)
 
+**D43. Error kinds say what happened to the program.** Fale's two main kinds of error are written in words, not as
+`CompileTimeError` and `RuntimeError`, since "compile time" and "run time" are programmer jargon (D29):
+
+```
+Refused before running: main.fale:1:13, line 1 column 13
+Stopped while running: main.fale:4:15, line 4 column 15
+```
+
+Claude proposed them after laying out Cyborg's and Jernal's formats; the owner chose: "Yes". (Owner, 2026-11-14)
+
+**D44. A `Whole` that goes past its limit is an error, found as early as it can be.** When the checker knows every value
+involved, because they're written in the program or held by fixed names with known values, an overflow is refused
+before running. When it depends on values only the running program knows, like typed input, the program stops while
+running. A `+` that only might overflow, like `#age + 1`, is never refused. The owner asked "But `+ 1` is known there,
+shouldn't it be a compiler error?", then "if the fucking variable is known at comp, that's what I meant". (Owner,
+2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -563,3 +580,7 @@ Claude proposed it, following D36 (`[ ]` holds) and D41; the owner chose: "yea".
 - Sized number types beside `Whole`, like `i32` (D30): which ones, and how they're spelled.
 - Whether `match` should give a value later (D40).
 - What a doc comment (`///`, D33) attaches to.
+- The rest of the error layout (D43): the place twice, a `^` run, `what:`, `why:` in plain words with no decision
+  numbers, `values:` for the actual values, `because:`, `fix:` with every real fix, all errors at once, and
+  fix-in-memory against knock-on errors. Also exit codes, `NotDesignedYet`, `NotBuiltYet` and the VM's own failures.
+- What happens when sized types like `i32` overflow (D30, D44).

@@ -1,4 +1,4 @@
-# 8. Not decided
+# 9. Not decided
 
 The same list as "Open" in [`DECISIONS.md`](../DECISIONS.md), by chapter.
 
@@ -34,3 +34,10 @@ The same list as "Open" in [`DECISIONS.md`](../DECISIONS.md), by chapter.
 ## Failures (chapter 6)
 
 - How a procedure signals a failure from its body (D22).
+
+## Error messages (chapter 8)
+
+- The rest of the layout: the place twice, a `^` run, `what:`, `why:` in plain words with no decision numbers,
+  `values:`, `because:`, `fix:` with every real fix, all errors at once, and fix-in-memory against knock-on errors.
+- Exit codes, `NotDesignedYet`, `NotBuiltYet` and the VM's own failures.
+- What happens when sized types like `i32` overflow.

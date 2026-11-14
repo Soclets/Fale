@@ -2,7 +2,7 @@
 
 This describes Fale as decided so far. Each rule names the decisions it comes from, and
 [`DECISIONS.md`](../DECISIONS.md) says why. Anything marked *(proposal)* has a shape on paper but isn't decided.
-Anything not here is in chapter 8. (D32)
+Anything not here is in chapter 9. (D32)
 
 1. [Syntax](01-syntax.md): lines, blocks, names, brackets, text
 2. [Types](02-types.md): numbers, text, collections, `or`, `one_of`, `tagged_union`
@@ -11,7 +11,8 @@ Anything not here is in chapter 8. (D32)
 5. [Procedures](05-procedures.md): `procedure`, `returns`, labels, defaults, `show_in_text`
 6. [Failures](06-failures.md): `fails` and `otherwise`
 7. [Memory and the VM](07-memory.md): the VM, the GC
-8. [Not decided](08-not-decided.md)
+8. [Error messages](08-error-messages.md): kinds and layout
+9. [Not decided](09-not-decided.md)
 
 ## Goal
 

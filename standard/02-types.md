@@ -11,6 +11,10 @@
 Sized types like `i32` exist beside `Whole` as the precise layer (D30). Which ones, and how they're spelled, isn't
 decided.
 
+A `Whole` that goes past its limit is an error (D44). If every value involved is known before running, it's refused
+before running; otherwise the program stops while running. A `+` that only might overflow, like `#age + 1`, is never
+refused.
+
 An inexact `Float` literal must be written with `~` in front, and the compiler checks it (D24):
 
 ```
