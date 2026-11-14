@@ -692,7 +692,7 @@ SIML's host, rather than fixed"; Claude filled in indentation, comment and quoti
   examples).
 - What happens when sized types like `i32` overflow (D30, D44).
 - The manifest's file name and its blocks and keys (D50, D52).
-- SIML: where its standard lives, lists, escaping a `\"` inside text, and whether facts can sit outside any block
+- SIML: where its standard lives, lists, escaping a `"` inside text, and whether facts can sit outside any block
   (D52).
 - Whether bringing in a package that touches files needs the program's own manifest to allow files too (D50).
 - The VM's API for hosts (D51).
