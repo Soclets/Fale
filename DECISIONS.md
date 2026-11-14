@@ -513,6 +513,29 @@ case. For now `match` is a statement and gives no value, since nothing has shown
 advised multi-case lines over a catch-all (Cyborg never designed them) and said the shared shape with failure
 handling made both easier to learn. Claude proposed it; the owner chose: "yea". (Owner, 2026-11-14)
 
+**D41. Fields are read with `.` and declared without `#`.** A field is a part of a value, not a name of its own, so
+it has no `#` (D1): it's declared as `failed[code: Whole]` and read through its value, `#result.code`. Reading a
+`tagged_union` case's field is allowed only where Fale knows the value is that case, such as inside `case failed:`;
+anywhere else it's refused, like using a value that might be `nothing` (D11). A field inherits its value's mutability
+(D25). This changes D31's and D36's `failed[#code: Whole]`.
+
+```
+tagged_union Result:
+    worked
+    failed[code: Whole]
+end tagged_union
+
+match #result:
+    case worked:
+        show_in_text("Done")
+    case failed:
+        show_in_text("Failed with code " #result.code)
+end match
+```
+
+The owner proposed the dot: "can't it just be `#r.r`?"; Claude proposed dropping `#` from declarations; the owner
+asked "Is it really a variable?", then chose: "yea". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -529,5 +552,5 @@ handling made both easier to learn. Claude proposed it; the owner chose: "yea". 
   `one_of`). `for each` breaks it, since `for` never appears alone.
 - Sized number types beside `Whole`, like `i32` (D30): which ones, and how they're spelled.
 - Whether `match` should give a value later (D40).
-- How a `tagged_union` case's data is read, and how a case with data is built.
+- How a `tagged_union` case with data is built.
 - What a doc comment (`///`, D33) attaches to.

@@ -15,7 +15,7 @@ The same list as "Open" in [`DECISIONS.md`](../DECISIONS.md), by chapter.
 ## Types (chapter 2)
 
 - Sized number types beside `Whole`, like `i32` (D30).
-- How a `tagged_union` case with data is spelled, built and read (D31).
+- How a `tagged_union` case with data is built (D31, D41).
 
 ## Names and values (chapter 3)
 

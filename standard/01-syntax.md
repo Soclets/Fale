@@ -29,7 +29,7 @@ Inside a procedure, the first lines may describe it before any code: `labels`, t
 
 - `( )` runs a procedure: `greet("Tankun")`. Grouping in maths, `(2 + 3) * 4`, is the one deliberate exception.
 - `[ ]` describes a declaration's parameters, `procedure greet[#name: Text]:`, and a `tagged_union` case's data,
-  `failed[#code: Whole]`; picks a position, `#people[position: 1]` (D4); holds a list, `["Tankun", "Mult"]`, or
+  `failed[code: Whole]` (D41); picks a position, `#people[position: 1]` (D4); holds a list, `["Tankun", "Mult"]`, or
   pairs, `["Tankun": 1000]` *(proposal)* (D3); and holds a procedure's `labels` and `defaults` (D18).
 - `< >` are only comparisons (D26): types are written in words, like `List of Text`.
 

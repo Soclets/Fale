@@ -93,8 +93,20 @@ A `tagged_union` is the precise layer beside `one_of` (D30, D31): each case may 
 ```
 tagged_union Result:
     worked
-    failed[#code: Whole]        // spelling of a case with data: proposal
+    failed[code: Whole]        // spelling of a case with data: proposal
 end tagged_union
 ```
 
-How a case with data is built and read isn't decided.
+A field is read with `.`, and declared without `#`, since it's a part of a value, not a name of its own (D41).
+Reading a case's field is allowed only where Fale knows the value is that case, such as inside `case failed:`:
+
+```
+match #result:
+    case worked:
+        show_in_text("Done")
+    case failed:
+        show_in_text("Failed with code " #result.code)
+end match
+```
+
+How a case with data is built isn't decided.
