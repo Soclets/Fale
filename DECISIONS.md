@@ -563,6 +563,19 @@ running. A `+` that only might overflow, like `#age + 1`, is never refused. The 
 shouldn't it be a compiler error?", then "if the fucking variable is known at comp, that's what I meant". (Owner,
 2026-11-14)
 
+**D45. `context:` gives the facts at the moment of an error.** An error message may have a `context:` line with
+facts about what the program had at that point: values, which type something is, what's known. It never holds advice
+or guesses; those belong to `fix:`, and earlier lines that caused the error to `because:`.
+
+```
+ context: `#people` has 3 items, and `#i` is 4
+ context: `#id` is Text here, not Whole
+```
+
+Cyborg and Jernal call a narrower version `when:`, for values only; the owner asked "The fuck is `when`?", Claude
+proposed `values:`, and the owner asked "What about `context:`? So it could be used generallt". Claude proposed this
+definition; the owner chose: "Yea". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -581,6 +594,6 @@ shouldn't it be a compiler error?", then "if the fucking variable is known at co
 - Whether `match` should give a value later (D40).
 - What a doc comment (`///`, D33) attaches to.
 - The rest of the error layout (D43): the place twice, a `^` run, `what:`, `why:` in plain words with no decision
-  numbers, `values:` for the actual values, `because:`, `fix:` with every real fix, all errors at once, and
+  numbers, `context:` (D45), `because:`, `fix:` with every real fix, all errors at once, and
   fix-in-memory against knock-on errors. Also exit codes, `NotDesignedYet`, `NotBuiltYet` and the VM's own failures.
 - What happens when sized types like `i32` overflow (D30, D44).
