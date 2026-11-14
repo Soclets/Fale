@@ -24,7 +24,8 @@ release builds: the GC needs thorough tests (D10).
 ## 7.4 Inside and outside
 
 Base Fale only computes. Anything that touches the outside world, including the terminal, files, time, randomness,
-the network and the program's surroundings, comes from the standard library, and only what the program's manifest allows can be used (D49, D50). Using
+the network and the program's surroundings, comes from the standard library, and only what the program's manifest allows can be used (D49, D50). The manifest
+is written in [SIML](https://github.com/Soclets/SIML) (D52, D53). Using
 something the manifest doesn't allow is refused before running.
 
 ## 7.5 Embedding

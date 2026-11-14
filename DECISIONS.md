@@ -671,6 +671,10 @@ line-based design; the owner sketched this instead: "Things like `name` and othe
 SIML's host, rather than fixed"; Claude filled in indentation, comment and quoting rules; the owner chose: "yea".
 (Owner, 2026-11-14)
 
+**D53. SIML lives in its own repository, `Soclets/SIML`.** Its standard and decisions moved there (SIML D1 to D3), and
+Fale points at it; D52 stays here as the record of how the redesign started. Claude proposed a shared repo, as
+Jernal's design session had suggested; the owner chose: "yup. SIML in big letters". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -692,7 +696,5 @@ SIML's host, rather than fixed"; Claude filled in indentation, comment and quoti
   examples).
 - What happens when sized types like `i32` overflow (D30, D44).
 - The manifest's file name and its blocks and keys (D50, D52).
-- SIML: where its standard lives, lists, escaping a `"` inside text, and whether facts can sit outside any block
-  (D52).
 - Whether bringing in a package that touches files needs the program's own manifest to allow files too (D50).
 - The VM's API for hosts (D51).
