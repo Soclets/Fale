@@ -7,7 +7,7 @@ The same list as "Open" in [`DECISIONS.md`](../DECISIONS.md), by chapter.
 - Tabs or spaces, and how many (D13).
 - Spaces or underscores in multi-word keywords. Proposed rule: spaces when each word stands on its own (`List of Text`,
   `else if`), underscores when the words only mean something together (`at_least`, `one_of`). `for each` breaks it.
-- Comment blocks (D33): indented inside or not, nesting, and what a doc comment attaches to.
+- Comment blocks (D33): nesting and what a doc comment attaches to.
 - Joining text with maths in the middle: is `"Total: " #a + #b` read as text, then `#a`, then `+ #b`? Maybe require
   brackets: `"Total: " (#a + #b)`.
 - The pair syntax `["key": value]`, and `( )` for grouping in maths.

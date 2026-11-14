@@ -41,7 +41,7 @@ show_in_text("Hello, " #name)
 ## 1.5 Comments
 
 `//` starts a comment that runs to the end of the line, on its own line or after code. `///` is a doc comment. A
-longer comment is a named block (D33):
+longer comment is a named block, and its text is indented like any block's (D33, D34):
 
 ```
 #health = 1000    // trailing a line
@@ -49,6 +49,6 @@ longer comment is a named block (D33):
 procedure double(#number: Whole) returns Whole:
 
 comment why_double:
-The old version added the number to itself in a loop.
+    The old version added the number to itself in a loop.
 end comment why_double
 ```

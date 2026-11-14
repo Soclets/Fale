@@ -410,7 +410,7 @@ area, ending with a "Not decided" chapter, like Cyborg's and Jernal's. Each rule
 
 **D33. Comments: `//`, `///` for docs, and a named `comment` block.** `//` starts a comment that runs to the end of
 the line, on a line of its own or after code. `///` is a doc comment. A longer comment is a block, named like any
-other block's `end` (D13):
+other block's `end` (D13). (The block's text is indented since D34.)
 
 ```
 #health = 1000    // trailing a line
@@ -418,12 +418,16 @@ other block's `end` (D13):
 procedure double(#number: Whole) returns Whole:
 
 comment why_double:
-The old version added the number to itself in a loop.
+    The old version added the number to itself in a loop.
 end comment why_double
 ```
 
 The owner wrote the design: "Comment syntax ... `// trailing-able too` `/// doc comment` `comment name:` `block`
 `end comment name`". (Owner, 2026-11-14)
+
+**D34. A comment block's text is indented.** Like any other block (D13), so a comment can't be mistaken for code
+around it. Changes D33's example. Claude asked whether a comment is the one block left free; the owner chose:
+"indent, Idk how to format here". (Owner, 2026-11-14)
 
 ## Open
 
@@ -443,5 +447,4 @@ The owner wrote the design: "Comment syntax ... `// trailing-able too` `/// doc 
 - `match` (D30, D31): its spelling, whether a missed case is refused (Cyborg refuses it), whether it gives a value,
   and whether it has a catch-all.
 - How a `tagged_union` case's data is read, and how a case with data is built.
-- Comment blocks (D33): is the text inside indented, like any block (D13)? Can blocks nest? What does a doc comment
-  attach to?
+- Comment blocks (D33): can they nest? What does a doc comment attach to?
