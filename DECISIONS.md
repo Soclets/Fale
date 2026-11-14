@@ -24,6 +24,8 @@ Read it, and you get what the program is trying to do. Normal, everyday names, b
   three words or fewer, without leaving out anything a reader needs, those words are the name: `at_least`,
   `show_in_text`, `max_length`. If they can't, it gets the standard word that other languages or fields already use,
   learned once: `Float`, `HashMap`, `grapheme`. Never invent a new word to learn when a standard one exists.
+- Progressive (D30): a simple tool for beginners, and the precise tool right beside it for when it's needed, like
+  `Whole` and `i32`, `if` and `match`. Both exist. The simple one is never the precise one renamed.
 - Each operator is one fixed word (with underscores if needed), not a free English phrase, so nobody has to guess
   which wording is accepted (the AppleScript problem).
 
@@ -365,6 +367,47 @@ raised it: "There's a line between "Make words that are able to be described sho
 words be learned" vs "Make every word a description""; Claude proposed the three-word test; the owner chose: "Write it
 down, and make the rule for clear". (Owner, 2026-11-14)
 
+**D30. Progressive means two layers side by side.** Fale gives beginners a simple tool, and keeps the precise tool
+right beside it for when they need it: `Whole` for everyday whole numbers and `i32` when the size matters, `if` for
+everyday choices and `match` for handling every case. Both layers exist, so learning the precise one never means
+unlearning the simple one, and a beginner never has to meet the precise one first. The simple layer is a real tool of
+its own, never the precise one under a friendlier name. Claude had proposed a single `one_of` block whose cases could
+carry data; the owner asked "A beginner language, it's supposed to be progressive, right?", then said "I swear, that
+looks like `tagged_union` renamed" and explained: "There's `Whole` for simple `i64`, and there's also `i32` there for
+you to use, if you want. There's an `if` for simple `match`, and `match` for you later. This is just renaming
+`tagged_union`". The owner asked for it to be defined: "we might wanna define `progressive`". (Owner, 2026-11-14)
+
+**D31. `one_of` for plain named values, `tagged_union` for cases that carry data.** Both are declared once as named
+blocks, so a header can say `returns Order`:
+
+```
+one_of Order:
+    before
+    same
+    after
+end one_of
+
+tagged_union Result:
+    worked
+    failed(#code: Whole)
+end tagged_union
+
+#order: Order = before
+```
+
+`one_of` is the simple layer (D30): its values are plain names, a closed list, not numbers in disguise, so `before + 1`
+is refused. `tagged_union` is the precise layer: each case may carry its own data, like Rust's enums and Cyborg's
+`union.tagged` (Cyborg D33). `one_of` is underscored because "one" means nothing on its own; `tagged_union` because it
+only means something as a whole, and Fale has no dotted narrowings (D23). The list in `one_of` answers "one of what?":
+the owner said "it already fucking said it `[before, same, after]`". The owner asked "Why does the `of` in `one of`
+have a space?", then "It seems like it should be a block, tbh", then "Why don't we just use `union.tagged`, then?";
+Claude proposed the two layers; the owner chose: "Seems good". The spelling of a case with data,
+`failed(#code: Whole)`, is a proposal. (Owner, 2026-11-14)
+
+**D32. A standard, in numbered chapters.** `standard/` describes the language as decided, one numbered chapter per
+area, ending with a "Not decided" chapter, like Cyborg's and Jernal's. Each rule names the decisions it comes from, and
+`DECISIONS.md` stays the record of why. The owner said: "and have a standard too". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -376,3 +419,11 @@ down, and make the rule for clear". (Owner, 2026-11-14)
 - Keep `function` for checked-pure procedures later, or drop the word?
 - Tabs or spaces, and how many (D13).
 - Named loops, like Jernal's D31 `break outer` (D17).
+- Spaces or underscores in multi-word keywords. Claude's proposed rule: spaces when each word stands on its own
+  (`List of Text`, `else if`, `end if`), underscores when the words only mean something together (`at_least`,
+  `one_of`). `for each` breaks it, since `for` never appears alone.
+- Sized number types beside `Whole`, like `i32` (D30): which ones, and how they're spelled.
+- `match` (D30, D31): its spelling, whether a missed case is refused (Cyborg refuses it), whether it gives a value,
+  and whether it has a catch-all.
+- How a `tagged_union` case's data is read, and how a case with data is built.
+- Comments: the examples use `//`, but it isn't decided.
