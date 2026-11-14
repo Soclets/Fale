@@ -4,7 +4,7 @@ A procedure's header lists what can go wrong with `fails [...]`, and the call ha
 `otherwise` (D22). There are no failure families. The exact spelling is a proposal.
 
 ```
-procedure read_whole(#question: Text) returns Whole, fails [not_a_number, cancelled]:
+procedure read_whole[#question: Text] returns Whole, fails [not_a_number, cancelled]:
     ...
 end procedure
 

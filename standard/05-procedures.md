@@ -6,11 +6,11 @@ Every function is a `procedure`, whether it gives something back or not (D8). On
 its header and uses `return` in its body (D9). No `returns` means it gives nothing back.
 
 ```
-procedure greet(#name: Text):
+procedure greet[#name: Text]:
     show_in_text("Hello, " #name)
 end procedure
 
-procedure double(#number: Whole) returns Whole:
+procedure double[#number: Whole] returns Whole:
     return #number + #number
 end procedure
 
@@ -29,7 +29,7 @@ labelled parameter's value when the call leaves it off. The header stays short, 
 uses the parameter names.
 
 ```
-procedure first_word(#text: Text, #limit: Whole) returns Text:
+procedure first_word[#text: Text, #limit: Whole] returns Text:
     labels [#limit as limit]
     defaults [#limit = 40]
     ...
@@ -42,7 +42,7 @@ first_word(#text)                    // #limit is 40
 Labelled arguments come in the declared order, unless the `labels` line says `order: any`:
 
 ```
-procedure transfer(#money: Whole, #payer: Text, #receiver: Text):
+procedure transfer[#money: Whole, #payer: Text, #receiver: Text]:
     labels [#money as amount, #payer as from, #receiver as to], order: any
     ...
 end procedure

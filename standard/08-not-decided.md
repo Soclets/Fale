@@ -10,7 +10,7 @@ The same list as "Open" in [`DECISIONS.md`](../DECISIONS.md), by chapter.
 - What a doc comment (`///`, D33) attaches to.
 - Joining text with maths in the middle: is `"Total: " #a + #b` read as text, then `#a`, then `+ #b`? Maybe require
   brackets: `"Total: " (#a + #b)`.
-- The pair syntax `["key": value]`, and `( )` for grouping in maths.
+- The pair syntax `["key": value]`.
 
 ## Types (chapter 2)
 

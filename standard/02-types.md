@@ -93,7 +93,7 @@ A `tagged_union` is the precise layer beside `one_of` (D30, D31): each case may 
 ```
 tagged_union Result:
     worked
-    failed(#code: Whole)        // spelling of a case with data: proposal
+    failed[#code: Whole]        // spelling of a case with data: proposal
 end tagged_union
 ```
 

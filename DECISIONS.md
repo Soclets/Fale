@@ -49,11 +49,11 @@ if #health at_least 500:
     ...
 end if
 
-procedure greet(#name: Text):
+procedure greet[#name: Text]:
     show_in_text("Hello, " #name)
 end procedure
 
-procedure double(#number: Whole) returns Whole:
+procedure double[#number: Whole] returns Whole:
     return #number + #number
 end procedure
 
@@ -446,6 +446,30 @@ end comment old_scoring
 ```
 
 The owner asked "What do you recom?"; Claude proposed this; the owner chose: "yea". (Owner, 2026-11-14)
+
+**D36. `( )` runs, `[ ]` describes or holds.** Like Jernal's bracket rule. `( )` runs something: a call,
+`greet("Tankun")`. `[ ]` describes or holds something: a declaration's parameters, a `tagged_union` case's data, a
+list, a position, `labels` and `defaults`. So declarations change from `( )` to `[ ]`, and a declaration can be told
+from a call at a glance:
+
+```
+procedure greet[#name: Text]:
+    show_in_text("Hello, " #name)
+end procedure
+
+greet("Tankun")
+
+tagged_union Result:
+    worked
+    failed[#code: Whole]
+end tagged_union
+```
+
+Grouping in maths, `(2 + 3) * 4`, is a deliberate exception: `( )` there groups, as taught at school. Jernal's third
+rule, `< >` for types, doesn't apply: Fale writes `List of Text`, so `<` and `>` are only comparisons (D26). This
+changes the procedure headers in D9, D11, D18, D22 and D23, and the case in D31; their entries keep the spelling they
+were decided with. The owner asked "Adopt bracket rules?"; Claude described Jernal's; the owner chose: "yea. Btw,
+`()` math grouping is a purposely done exception". (Owner, 2026-11-14)
 
 ## Open
 
