@@ -138,3 +138,14 @@ end otherwise
 - **Always exact**, written plainly: `Whole` to `Decimal` or `Text`, a sized type to `Whole`.
 - **Can fail**, handled with `otherwise:`: `Text` to `Whole`, `Whole` to `i32`, `Decimal` to `Whole`.
 - **Loses information**, refused unless it says how: `Float` to `Whole`, `Decimal` to `Float`.
+
+`rounding:` takes one of six words (D59):
+
+| Word | 2.7 | 2.5 | 3.5 | -2.7 |
+|---|---|---|---|---|
+| `down` | 2 | 2 | 3 | -3 |
+| `up` | 3 | 3 | 4 | -2 |
+| `nearest` (halves away from zero, as at school) | 3 | 3 | 4 | -3 |
+| `toward_zero` (cuts the fraction off) | 2 | 2 | 3 | -2 |
+| `nearest_even` (halves to the even number) | 3 | 2 | 4 | -3 |
+| `away_from_zero` | 3 | 3 | 4 | -3 |

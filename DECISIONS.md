@@ -708,6 +708,30 @@ Exact: `Whole` to `Decimal` or `Text`, a sized type to `Whole`. Can fail: `Text`
 proposed `#name -> Whole`, then said "Though, `as` still reads better"; Claude laid out the three shapes with `as`; the
 owner chose: "yea". (Owner, 2026-11-14)
 
+**D58. Fale drives; native libraries do the heavy work.** Like Python driving C and C++ libraries: Fale is the
+readable layer that says what a program does, and speed-critical work lives in native libraries, written in Zig, C or
+C++. Precision tricks such as random rounding for AI training belong in those libraries, not in base Fale. How Fale
+loads and calls native libraries isn't designed yet; since native code can touch anything, the manifest (D50) should
+list it as a permission of its own. The owner said: "I like Python's way, big boi fast master in C++/C, and Python
+drives it", then chose: "yea". (Owner, 2026-11-14)
+
+**D59. Six rounding words.** `rounding:` (D57) takes `down`, `up`, `nearest` (halves away from zero, as taught at
+school), `toward_zero` (cuts the fraction off), `nearest_even` (halves to the even number, for money and statistics)
+and `away_from_zero`:
+
+| Word | 2.7 | 2.5 | 3.5 | -2.7 |
+|---|---|---|---|---|
+| `down` | 2 | 2 | 3 | -3 |
+| `up` | 3 | 3 | 4 | -2 |
+| `nearest` | 3 | 3 | 4 | -3 |
+| `toward_zero` | 2 | 2 | 3 | -2 |
+| `nearest_even` | 3 | 2 | 4 | -3 |
+| `away_from_zero` | 3 | 3 | 4 | -3 |
+
+Random rounding was left out because ordinary programs don't need it and, under D58, it belongs in native libraries,
+not because it isn't reproducible: Fale never promised reproducibility (D3). The owner asked "More?", then "Wait, then
+why isn't HashMap banned? Hm?", then chose: "yea". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -730,5 +754,5 @@ owner chose: "yea". (Owner, 2026-11-14)
 - The manifest's file name and its blocks and keys (D50, D52).
 - Whether bringing in a package that touches files needs the program's own manifest to allow files too (D50).
 - The VM's API for hosts (D51).
-- Conversion (D57): the full table of which conversions exist and their kind, the failure names, and the rounding
-  words.
+- Conversion (D57): the full table of which conversions exist and their kind, and the failure names.
+- How Fale loads and calls native libraries, and the manifest permission for them (D58).

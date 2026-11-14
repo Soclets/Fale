@@ -15,7 +15,8 @@ The same list as "Open" in [`DECISIONS.md`](../DECISIONS.md), by chapter.
 
 - Sized number types beside `Whole`, like `i32` (D30).
 
-- Conversion (D57): the full table, the failure names, and the rounding words.
+- Conversion (D57): the full table and the failure names.
+- How Fale loads and calls native libraries, and their manifest permission (D58).
 
 ## Names and values (chapter 3)
 
