@@ -1,20 +1,17 @@
 # Fale
 
-**Speak!** *(placeholder tagline)*
+**Speak!**
 
-Read it, and you get what the program is trying to do.
+Express yourself in a beginner-friendly but clear way.
 
 Fale ("speak!" in Portuguese) is a readable programming language: normal, everyday names, but clearer than Python.
 Words go where a symbol would be a guess, and the symbols everyone knows from school stay. It runs on a VM written in
 Zig, with a generational, concurrent GC. It's being designed now, and every decision is in
 [`DECISIONS.md`](DECISIONS.md).
 
+## Hello, World!
 ```
-procedure greet(#name: Text):
-    show_in_text("Hello, " #name)
-end procedure
-
-greet("Tankun")
+show_with_text("Hello, World!")
 ```
 
 The old Fale, a Zig VM that beat PUC Lua 5.5.1 on 7 of 11 benchmarks, is now
