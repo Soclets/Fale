@@ -429,6 +429,24 @@ The owner wrote the design: "Comment syntax ... `// trailing-able too` `/// doc 
 around it. Changes D33's example. Claude asked whether a comment is the one block left free; the owner chose:
 "indent, Idk how to format here". (Owner, 2026-11-14)
 
+**D35. Comment blocks nest, but never inside one with the same name.** So code that already holds a comment block can
+be commented out: `end comment why_double` can only close `why_double`, never the block around it, unlike C, where an
+inner `*/` ends the outer `/*` early. A block inside another block with the same name is refused, and the error asks
+for a different name. Inside a comment block, everything is free text except lines that open or close a comment block.
+
+```
+comment old_scoring:
+    procedure score(#points: Whole) returns Whole:
+        comment why_double:
+            The old version added the number to itself in a loop.
+        end comment why_double
+        return #points + #points
+    end procedure
+end comment old_scoring
+```
+
+The owner asked "What do you recom?"; Claude proposed this; the owner chose: "yea". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -447,4 +465,4 @@ around it. Changes D33's example. Claude asked whether a comment is the one bloc
 - `match` (D30, D31): its spelling, whether a missed case is refused (Cyborg refuses it), whether it gives a value,
   and whether it has a catch-all.
 - How a `tagged_union` case's data is read, and how a case with data is built.
-- Comment blocks (D33): can they nest? What does a doc comment attach to?
+- What a doc comment (`///`, D33) attaches to.

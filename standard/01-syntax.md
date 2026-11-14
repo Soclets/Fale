@@ -52,3 +52,17 @@ comment why_double:
     The old version added the number to itself in a loop.
 end comment why_double
 ```
+
+Comment blocks nest, so code that already holds one can be commented out, but a block can't sit inside one with the
+same name (D35). Inside a comment block, everything is free text except lines that open or close a comment block.
+
+```
+comment old_scoring:
+    procedure score(#points: Whole) returns Whole:
+        comment why_double:
+            The old version added the number to itself in a loop.
+        end comment why_double
+        return #points + #points
+    end procedure
+end comment old_scoring
+```
