@@ -119,3 +119,22 @@ A case with data is built with every field labelled, mirroring its declaration (
 #result: Result = failed[code: 3]
 #done: Result = worked
 ```
+
+## 2.7 Conversion
+
+A value is converted with `as` (D57). How it's written depends on what can go wrong:
+
+```
+#label = #count as Text                      // always exact
+
+#age = #input as Whole otherwise:            // can fail
+    case not_a_number:
+        show_in_text("That's not a number")
+end otherwise
+
+#dollars = #price as Whole, rounding: down   // loses information, says how
+```
+
+- **Always exact**, written plainly: `Whole` to `Decimal` or `Text`, a sized type to `Whole`.
+- **Can fail**, handled with `otherwise:`: `Text` to `Whole`, `Whole` to `i32`, `Decimal` to `Whole`.
+- **Loses information**, refused unless it says how: `Float` to `Whole`, `Decimal` to `Float`.

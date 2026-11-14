@@ -689,6 +689,25 @@ quietly meaning a backslash and an `n`. Claude proposed matching SIML; the owner
 (D55): `#message = "Line one" new_line "Line two"`. It needs no new syntax and describes itself (D29). Claude proposed
 it; the owner chose: "yea". (Owner, 2026-11-14)
 
+**D57. Conversion is written with `as`, in three shapes.** A conversion that is always exact is plain. One that can
+fail uses failure handling (D22). One that loses information must say how, with a label, and is refused without it:
+
+```
+#label = #count as Text                      // always exact
+
+#age = #input as Whole otherwise:            // can fail
+    case not_a_number:
+        show_in_text("That's not a number")
+end otherwise
+
+#dollars = #price as Whole, rounding: down   // loses information, says how
+```
+
+Exact: `Whole` to `Decimal` or `Text`, a sized type to `Whole`. Can fail: `Text` to `Whole`, `Whole` to `i32`,
+`Decimal` to `Whole`. Loses information: `Float` to `Whole`, `Decimal` to `Float`. Like Cyborg's D424. The owner
+proposed `#name -> Whole`, then said "Though, `as` still reads better"; Claude laid out the three shapes with `as`; the
+owner chose: "yea". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -711,3 +730,5 @@ it; the owner chose: "yea". (Owner, 2026-11-14)
 - The manifest's file name and its blocks and keys (D50, D52).
 - Whether bringing in a package that touches files needs the program's own manifest to allow files too (D50).
 - The VM's API for hosts (D51).
+- Conversion (D57): the full table of which conversions exist and their kind, the failure names, and the rounding
+  words.

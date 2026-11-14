@@ -15,6 +15,8 @@ The same list as "Open" in [`DECISIONS.md`](../DECISIONS.md), by chapter.
 
 - Sized number types beside `Whole`, like `i32` (D30).
 
+- Conversion (D57): the full table, the failure names, and the rounding words.
+
 ## Names and values (chapter 3)
 
 - Can the type be left off when it's obvious, like `#name = "Tankun"`?
