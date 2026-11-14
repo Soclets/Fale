@@ -685,6 +685,10 @@ same rules as SIML (SIML D6, D7), so a text value can be copied between Fale cod
 otherwise still literal (D7): nothing else inside it is replaced, and `"line one\nline two"` is refused rather than
 quietly meaning a backslash and an `n`. Claude proposed matching SIML; the owner chose: "yea". (Owner, 2026-11-14)
 
+**D56. A line break in text is the value `new_line`.** Joined side by side like any value (D7), since `\n` is refused
+(D55): `#message = "Line one" new_line "Line two"`. It needs no new syntax and describes itself (D29). Claude proposed
+it; the owner chose: "yea". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until

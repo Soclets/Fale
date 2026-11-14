@@ -49,6 +49,7 @@ side by side:
 
 ```
 show_in_text("Hello, " #name)
+#message = "Line one" new_line "Line two"    // new_line is a line break (D56)
 ```
 
 ## 1.5 Comments
