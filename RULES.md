@@ -60,3 +60,25 @@ Each implementation session works on `main` with no branch, and runs `git pull -
 19. **Oracle day-one rules.** A Fale integer never touches OCaml's 63-bit `int`: use `Int64`, or zarith's `Z` for
     exact steps, then a range check. Steps with side effects are ordered with `let ... in`. A case that can't happen
     raises `Impossible`. The checker produces a checked tree that the interpreter runs. (D38)
+
+## Tracing
+
+Code that carries out a decision says so with a comment, in the host language's comment syntax (D39):
+
+```
+// trace: D26          (Zig)
+(* trace: D26 *)       (OCaml)
+```
+
+A check fails on a tag that names no decision, and lists the decisions nothing traces yet.
+
+## Naming
+
+The code uses Fale's own words, so the code, the decisions and the error messages all say the same thing (D39).
+
+- **Full words.** `expression`, not `expr`.
+- **One name per idea.**
+- **Fale's words over textbook words.** `procedure`, not `function`; `position`, not `index`; `Whole`, not `int`;
+  `share`, not `reference`.
+- **The host language's casing.** OCaml's `snake_case`; Zig's style guide in the VM.
+- **Tests are named after their decision.**

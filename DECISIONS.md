@@ -488,6 +488,13 @@ evaluate arguments right to left; a case that can't happen raises `Impossible`, 
 checker produces a checked tree that the interpreter runs; the parser recovers from errors from the start; and a
 fuzzer is built early. Claude recommended it and asked JernOrac first; the owner chose: "yea". (Owner, 2026-11-14)
 
+**D39. Host code traces decisions and uses Fale's words.** The VM and the oracle mark code that carries out a
+decision with a `trace: D<number>` comment, and a check fails on a tag naming no decision and lists decisions nothing
+traces yet. Their names are full words, one per idea, in Fale's own words over textbook ones (`procedure`, `position`,
+`Whole`, `share`), in the host language's casing, and tests are named after their decision. Both sections come from
+Jernal's rules. The owner asked "What are the rules for writing host source code?"; Claude proposed adding Jernal's
+Tracing and Naming; the owner chose: "yes". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
