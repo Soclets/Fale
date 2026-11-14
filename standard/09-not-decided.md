@@ -29,6 +29,8 @@ The same list as "Open" in [`DECISIONS.md`](../DECISIONS.md), by chapter.
 
 ## Procedures (chapter 5)
 
+- How a program brings in parts of the standard library, and what each part holds (D49).
+
 - Keep `function` for checked-pure procedures later, or drop the word (D8)?
 
 ## Failures (chapter 6)

@@ -617,6 +617,15 @@ It's Cyborg's and Jernal's layout (from Radium), with three beginner changes: no
 decision numbers in there"), `what:` kept beside `fix:`, and more than one fix allowed, as long as each is real. The
 owner chose: "yes". (Owner, 2026-11-14)
 
+**D49. Base Fale touches nothing outside the program; the standard library does.** Base Fale only computes: maths,
+`Text`, collections, `Decimal` and the like. Anything that touches the outside world comes from the standard library
+and has to be brought in: the terminal (including `show_in_text`, with no exception), files and folders, time,
+randomness, the network, and the program's surroundings (arguments, environment variables, other programs). So the
+top of a program says what it can touch, and a program that brings nothing in can't touch anything. How things are
+brought in isn't designed yet. The owner proposed it: "I think it should be some external things, and base Fale can't
+touch anything external"; Claude asked whether `show_in_text` is the one exception; the owner chose: "no exception".
+(Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -637,3 +646,4 @@ owner chose: "yes". (Owner, 2026-11-14)
 - Exit codes, `NotDesignedYet`, `NotBuiltYet` and the VM's own failures (D43). The file extension (`.fale` in
   examples).
 - What happens when sized types like `i32` overflow (D30, D44).
+- How a program brings in parts of the standard library (D49), and what each part holds.

@@ -20,3 +20,8 @@ release builds: the GC needs thorough tests (D10).
 ## 7.3 Sharing
 
 `copy` and `share` (chapter 3) say what a program means; they don't free anything. The GC frees memory (D19).
+
+## 7.4 Inside and outside
+
+Base Fale only computes. Anything that touches the outside world, including the terminal, files, time, randomness,
+the network and the program's surroundings, comes from the standard library and has to be brought in (D49).

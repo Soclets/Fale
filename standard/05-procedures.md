@@ -57,7 +57,8 @@ There are no families or narrowings (D23). A variant of a procedure is a labelle
 
 ## 5.4 `show_in_text`
 
-`show_in_text(...)` shows something as text output (D21). Plain `show` might suggest a new window.
+`show_in_text(...)` shows something as text output (D21). It comes from the standard library, since output touches
+the outside world (D49). Plain `show` might suggest a new window.
 
 ```
 show_in_text(#x)                   // the usual, readable form
