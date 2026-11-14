@@ -471,6 +471,23 @@ changes the procedure headers in D9, D11, D18, D22 and D23, and the case in D31;
 were decided with. The owner asked "Adopt bracket rules?"; Claude described Jernal's; the owner chose: "yea. Btw,
 `()` math grouping is a purposely done exception". (Owner, 2026-11-14)
 
+**D37. Who does what: Fale 2 Design Claude designs, writes the oracle and checks; Fale Impl Claude builds the VM.**
+Fale 2 Design Claude keeps the decisions and the standard, writes the oracle (`oracle/`) and the tests (`tests/`),
+and checks Fale Impl Claude's work against the standard. Fale Impl Claude builds the Zig VM (D10) in its own clone.
+The oracle and the VM never read each other's code, so their bugs can't agree; where they differ, the standard decides
+which is wrong, and if it's silent, that's a question for the owner (like Jernal's rule 18). The owner proposed it:
+"Now, impltors. You do oracle and checking and design? While `Fale Impl Claude` does the other stuff?". Claude noted
+the cost, that oracle code slows design talk, so the oracle can move to its own session later. (Owner, 2026-11-14)
+
+**D38. The oracle is written in OCaml.** OCaml's variants and checked `match` suit a syntax tree, its GC makes `share`
+just two names holding the same list, zarith's exact fractions fit `Decimal` and `stored: true`, uuseg handles
+graphemes, and it isn't Zig, so it can't share the VM's mistakes. JernOrac uses it and would pick it again. From
+JernOrac's experience, on day one: a language integer never touches OCaml's 63-bit `int` (`Int64`, or zarith's `Z`
+for exact steps, then a range check); steps with side effects are put in order with `let ... in`, since OCaml may
+evaluate arguments right to left; a case that can't happen raises `Impossible`, never quietly returns something; the
+checker produces a checked tree that the interpreter runs; the parser recovers from errors from the start; and a
+fuzzer is built early. Claude recommended it and asked JernOrac first; the owner chose: "yea". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until

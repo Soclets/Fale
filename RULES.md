@@ -6,10 +6,12 @@ and this file is updated to match. Keep it short: every session pays for it in c
 
 ## Sessions
 
-- **Fale 2 Design Claude**: the decisions, `DECISIONS.md`, `RULES.md`, and later the standard (`standard/`). Works in
-  `/Users/ts/Fale 2 Design`.
-- Later: implementation sessions (the Zig VM, D10), each in its own clone, on `main` with no branch, running
-  `git pull --rebase` before pushing.
+- **Fale 2 Design Claude**: the decisions, `DECISIONS.md`, `RULES.md`, the standard (`standard/`), the oracle
+  (`oracle/`, in OCaml) and the tests (`tests/`), and checking Fale Impl Claude's work against the standard. Works in
+  `/Users/ts/Fale 2 Design`. (D37, D38)
+- **Fale Impl Claude**: the Zig VM (D10), in `vm/`, in its own clone. (D37)
+
+Each implementation session works on `main` with no branch, and runs `git pull --rebase` before pushing.
 
 ## Rules
 
@@ -18,7 +20,7 @@ and this file is updated to match. Keep it short: every session pays for it in c
 2. **Talk in chat.** One question at a time, in plain chat. No popups, no premade answers, no question boxes or
    buttons. Explain things and keep answers short, but keep the "scary" words, such as `i64` (a 64-bit signed
    integer). Tankun designs but doesn't code, so explain code basics plainly. Swearing is fine; don't over-apologise.
-3. **Names.** Each session calls itself "Fale 2 <role> Claude" in public and when messaging other sessions. Use
+3. **Names.** Each session calls itself by its name above in public and when messaging other sessions. Use
    they/them for Tankun.
 4. **Ask, don't assume.** To learn about another of Tankun's languages, message that language's design session; its
    docs may be outdated. Write to other sessions like one colleague talking to another. Ask Tankun before messaging
@@ -52,3 +54,9 @@ and this file is updated to match. Keep it short: every session pays for it in c
 16. **Keep up with decisions.** Every pull, read any new entries in `DECISIONS.md`. A small one in your area, just
     build it. A big one, build after finishing what you're doing, and ask Fale 2 Design Claude if it's unclear.
 17. **No inline widgets.** Never use the visualize/show_widget tool. Draw visuals as real files.
+18. **The oracle stays apart.** The oracle is written from `standard/` only. It never reads `vm/`, and the VM never
+    reads `oracle/`, so their bugs can't agree. Where they differ, the standard decides which is wrong; if it's
+    silent, that's a question for Tankun. (D37)
+19. **Oracle day-one rules.** A Fale integer never touches OCaml's 63-bit `int`: use `Int64`, or zarith's `Z` for
+    exact steps, then a range check. Steps with side effects are ordered with `let ... in`. A case that can't happen
+    raises `Impossible`. The checker produces a checked tree that the interpreter runs. (D38)
