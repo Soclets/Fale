@@ -352,8 +352,9 @@ owner said: "Make a GH repo, new decisions folder/file. Ask Cyborg for rules & h
 
 ## Open
 
-- What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Claude's
-  proposal: refuse them on Text, and point to a named procedure for alphabetical order.
+- What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
+  procedures are fully designed. The owner's sketch: `compare_text("Zebra", "apple", format: grapheme, case: sensitive)`.
+  Its result (before, same, after) needs a type that doesn't exist yet.
 - Is the type optional when it's obvious, like `#name = "Tankun"`?
 - Joining with maths in the middle: is `"Total: " #a + #b` read as text then `#a` then `+ #b`? Maybe require
   brackets: `"Total: " (#a + #b)`.
