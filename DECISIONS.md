@@ -642,6 +642,35 @@ global state, so several scripts can run side by side, and offers a clean API fo
 your idea is for Fale to become an embeddable, contained scripting language?"; Claude said it falls out of D49 and
 asked whether to aim for it; the owner chose: "Seems good". (Owner, 2026-11-14)
 
+**D52. SIML, redesigned: named blocks, `key = value`, `( )` comments, quoted text and bare host words.** Fale's
+manifest (D50) is written in SIML, the owner's own format from Cyborg (Cyborg D228 to D231, also used by Jernal),
+redesigned from scratch on the owner's sketch:
+
+```
+details:
+    name = "Hello"
+    description = "Says hello to the world"    (this is a comment)
+end details
+
+permissions:
+    files = allowed
+    terminal = allowed
+end permissions
+```
+
+- The host defines everything: block names, keys, and which values are allowed. SIML only knows blocks,
+  `key = value`, quotes and comments.
+- A block opens with `name:` and closes with `end name`; lines inside are indented (like D13).
+- `( )` is a comment, anywhere outside quotes, including on a line of its own. Brackets inside a comment balance, so
+  `(see (this))` is one comment. Inside quotes, `(` is just a character.
+- Quotes mean text, even without a space: `"Hello"`. A bare word is one the host knows, like a `one_of` value
+  (`allowed`), and the host refuses a word it doesn't know.
+
+The owner said "Let's make an siml standard actually, scratch syntax. Let's get it, propose"; Claude proposed a
+line-based design; the owner sketched this instead: "Things like `name` and other settings are definiable by that
+SIML's host, rather than fixed"; Claude filled in indentation, comment and quoting rules; the owner chose: "yea".
+(Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -662,6 +691,8 @@ asked whether to aim for it; the owner chose: "Seems good". (Owner, 2026-11-14)
 - Exit codes, `NotDesignedYet`, `NotBuiltYet` and the VM's own failures (D43). The file extension (`.fale` in
   examples).
 - What happens when sized types like `i32` overflow (D30, D44).
-- The manifest's name and format, and the list of permissions (D50).
+- The manifest's file name and its blocks and keys (D50, D52).
+- SIML: where its standard lives, lists, escaping a `\"` inside text, and whether facts can sit outside any block
+  (D52).
 - Whether bringing in a package that touches files needs the program's own manifest to allow files too (D50).
 - The VM's API for hosts (D51).
