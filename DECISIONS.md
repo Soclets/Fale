@@ -536,6 +536,16 @@ end match
 The owner proposed the dot: "can't it just be `#r.r`?"; Claude proposed dropping `#` from declarations; the owner
 asked "Is it really a variable?", then chose: "yea". (Owner, 2026-11-14)
 
+**D42. A case with data is built with its fields labelled in `[ ]`.** Building mirrors declaring, with the type
+swapped for a value, and every field is labelled, so `failed[3]` is refused, like a missing declared label (D18):
+
+```
+#result: Result = failed[code: 3]
+#done: Result = worked
+```
+
+Claude proposed it, following D36 (`[ ]` holds) and D41; the owner chose: "yea". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -552,5 +562,4 @@ asked "Is it really a variable?", then chose: "yea". (Owner, 2026-11-14)
   `one_of`). `for each` breaks it, since `for` never appears alone.
 - Sized number types beside `Whole`, like `i32` (D30): which ones, and how they're spelled.
 - Whether `match` should give a value later (D40).
-- How a `tagged_union` case with data is built.
 - What a doc comment (`///`, D33) attaches to.

@@ -109,4 +109,9 @@ match #result:
 end match
 ```
 
-How a case with data is built isn't decided.
+A case with data is built with every field labelled, mirroring its declaration (D42):
+
+```
+#result: Result = failed[code: 3]
+#done: Result = worked
+```
