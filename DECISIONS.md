@@ -576,6 +576,14 @@ Cyborg and Jernal call a narrower version `when:`, for values only; the owner as
 proposed `values:`, and the owner asked "What about `context:`? So it could be used generallt". Claude proposed this
 definition; the owner chose: "Yea". (Owner, 2026-11-14)
 
+**D46. Every error is shown at once, without knock-on errors.** Like Cyborg's D207 and Jernal's D13. The checker
+finds an error and its fix, applies the fix in memory only, never in the file, and checks again; an error that
+disappears was caused by the first one, so it isn't shown on its own but as a `because:` pointing back. The checking
+must really carry on as if the code were fixed. If there's more than one real fix, the first is applied. With no
+certain fix, only the broken line is skipped, and nothing that's only wrong because something else is unknown is
+reported. Claude described Cyborg's and Jernal's technique; the owner asked "Did we adopt the anti cascade err tech?",
+then chose: "yea". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -594,6 +602,5 @@ definition; the owner chose: "Yea". (Owner, 2026-11-14)
 - Whether `match` should give a value later (D40).
 - What a doc comment (`///`, D33) attaches to.
 - The rest of the error layout (D43): the place twice, a `^` run, `what:`, `why:` in plain words with no decision
-  numbers, `context:` (D45), `because:`, `fix:` with every real fix, all errors at once, and
-  fix-in-memory against knock-on errors. Also exit codes, `NotDesignedYet`, `NotBuiltYet` and the VM's own failures.
+  numbers, `context:` (D45), `because:`, and `fix:` with every real fix. Also exit codes, `NotDesignedYet`, `NotBuiltYet` and the VM's own failures.
 - What happens when sized types like `i32` overflow (D30, D44).

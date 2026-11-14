@@ -21,4 +21,11 @@ Stopped while running: main.fale:4:15, line 4 column 15
 `context:` gives facts about what the program had at that point: values, which type something is, what's known
 (D45). It never holds advice or guesses.
 
+## 8.3 Every error at once
+
+Every error is shown at once, without knock-on errors (D46). The checker applies an error's fix in memory only, never
+in the file, and checks again; an error that disappears was caused by the first one, and is shown as a `because:`
+pointing back. With more than one real fix, the first is applied. With no certain fix, only the broken line is
+skipped, and nothing that's only wrong because something else is unknown is reported.
+
 Not decided yet: the rest of this layout, file extensions and exit codes (chapter 9).
