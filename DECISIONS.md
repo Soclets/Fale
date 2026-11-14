@@ -584,6 +584,20 @@ certain fix, only the broken line is skipped, and nothing that's only wrong beca
 reported. Claude described Cyborg's and Jernal's technique; the owner asked "Did we adopt the anti cascade err tech?",
 then chose: "yea". (Owner, 2026-11-14)
 
+**D47. Error messages are templates in the standard, filled from the real program.** Only a message's sentence shape
+is fixed. Its slots are filled from the program: names and expressions exactly as written, types, values, the place,
+and fixes built from the actual code (`~0.1`, not `~<number>`):
+
+```
+what:    `{expression}` is too big for a {type}
+what:    `#big + 1` is too big for a Whole
+```
+
+Every template lives in the standard, in one catalogue. The oracle and the VM both follow it, so their messages match
+byte for byte without either reading the other's code (D37), and the owner can read and approve every message Fale can
+show in one place. The owner asked "should we make dynamic source code? ... Like, `variable name` in error actually
+shows the variable name, etc"; Claude proposed the catalogue; the owner chose: "yea". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until

@@ -28,4 +28,19 @@ in the file, and checks again; an error that disappears was caused by the first 
 pointing back. With more than one real fix, the first is applied. With no certain fix, only the broken line is
 skipped, and nothing that's only wrong because something else is unknown is reported.
 
+## 8.4 Templates
+
+Every message is a template with slots, filled from the program: names and expressions exactly as written, types,
+values, the place, and fixes built from the actual code (D47). The catalogue of templates is section 8.5, and both the
+oracle and the VM follow it word for word.
+
+```
+what:    `{expression}` is too big for a {type}
+what:    `#big + 1` is too big for a Whole
+```
+
+## 8.5 Catalogue
+
+*(Empty so far: templates are added as each error is designed.)*
+
 Not decided yet: the rest of this layout, file extensions and exit codes (chapter 9).
