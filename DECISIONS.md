@@ -20,6 +20,10 @@ Read it, and you get what the program is trying to do. Normal, everyday names, b
 - Keep symbols everyone knows from school: `+ - = ( ) < >`.
 - Full words, but not extra words. Long words are fine, since IDE autocomplete makes them cheap to type.
 - Clear first, pretty second.
+- Describe it if it's short, otherwise use the learned word (D29). If everyday words can say what something does in
+  three words or fewer, without leaving out anything a reader needs, those words are the name: `at_least`,
+  `show_in_text`, `max_length`. If they can't, it gets the standard word that other languages or fields already use,
+  learned once: `Float`, `HashMap`, `grapheme`. Never invent a new word to learn when a standard one exists.
 - Each operator is one fixed word (with underscores if needed), not a free English phrase, so nobody has to guess
   which wording is accepted (the AppleScript problem).
 
@@ -349,6 +353,17 @@ siblings; the old Fale is `Soclets/Fale-legacy`. Code is under Apache-2.0 WITH L
 programs run with Fale owe nothing; the repo's Markdown is under CC BY 4.0, in `LICENSE-CC-BY-4.0`. This is Cyborg's
 licensing (its D262), as Cyborg's design session described it; both files went in before the first public push. The
 owner said: "Make a GH repo, new decisions folder/file. Ask Cyborg for rules & hook". (Owner, 2026-11-14)
+
+**D29. Describe it if it's short, otherwise use the learned word.** A name passes one test: can everyday words say
+what it does in three words or fewer, without leaving out anything a reader needs? If yes, those words are the name,
+joined with underscores: `at_least`, `not_equal`, `show_in_text`, `max_length`, `compare_text`. If no, it gets the
+standard word other languages or fields already use, so it's learned once and pays off everywhere: `Float`, `Array`,
+`Boolean`, `HashMap`, `grapheme`. A new word to learn is never invented when a standard one exists. A description
+that only fits by dropping something important fails the test, so it isn't used: "number with a point" for `Float`
+would hide that it's approximate. This writes down what D3 already did with Float, Array and Boolean. The owner
+raised it: "There's a line between "Make words that are able to be described shortly be that, and let more complex
+words be learned" vs "Make every word a description""; Claude proposed the three-word test; the owner chose: "Write it
+down, and make the rule for clear". (Owner, 2026-11-14)
 
 ## Open
 
