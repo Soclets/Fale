@@ -4,7 +4,6 @@ The same list as "Open" in [`DECISIONS.md`](../DECISIONS.md), by chapter.
 
 ## Syntax (chapter 1)
 
-- Tabs or spaces, and how many (D13).
 - Spaces or underscores in multi-word keywords. Proposed rule: spaces when each word stands on its own (`List of Text`,
   `else if`), underscores when the words only mean something together (`at_least`, `one_of`). `for each` breaks it.
 - What a doc comment (`///`, D33) attaches to.

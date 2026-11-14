@@ -4,7 +4,7 @@
 
 A line that opens a block ends with `:`. The block closes with `end` and the kind of block it was: `end if`,
 `end for`, `end procedure`, `end one_of` (D13). Indentation inside a block is required, so code always looks the way
-it's structured. Tabs or spaces, and how many, aren't decided (chapter 9).
+it's structured. Each level is 4 spaces, and a tab character is refused (D54).
 
 ```
 if #health at_least 500:

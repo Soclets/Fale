@@ -675,6 +675,11 @@ SIML's host, rather than fixed"; Claude filled in indentation, comment and quoti
 Fale points at it; D52 stays here as the record of how the redesign started. Claude proposed a shared repo, as
 Jernal's design session had suggested; the owner chose: "yup. SIML in big letters". (Owner, 2026-11-14)
 
+**D54. Indentation is 4 spaces per level, and a tab character is refused.** Settles D13's open question. A tab and
+spaces can look identical on screen while meaning different things, the classic invisible Python error. The error
+offers to convert the tab; editors insert spaces when the Tab key is pressed. SIML uses the same rule (SIML D9). Claude
+proposed it for both; the owner asked "What does that mean?", then chose: "yea". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -684,7 +689,6 @@ Jernal's design session had suggested; the owner chose: "yup. SIML in big letter
 - Joining with maths in the middle: is `"Total: " #a + #b` read as text then `#a` then `+ #b`? Maybe require
   brackets: `"Total: " (#a + #b)`.
 - Keep `function` for checked-pure procedures later, or drop the word?
-- Tabs or spaces, and how many (D13).
 - Named loops, like Jernal's D31 `break outer` (D17).
 - Spaces or underscores in multi-word keywords. Claude's proposed rule: spaces when each word stands on its own
   (`List of Text`, `else if`, `end if`), underscores when the words only mean something together (`at_least`,
