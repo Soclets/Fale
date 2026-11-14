@@ -680,6 +680,11 @@ spaces can look identical on screen while meaning different things, the classic 
 offers to convert the tab; editors insert spaces when the Tab key is pressed. SIML uses the same rule (SIML D9). Claude
 proposed it for both; the owner asked "What does that mean?", then chose: "yea". (Owner, 2026-11-14)
 
+**D55. Inside text, `\"` is a quote, `\\` is a backslash, and a backslash before anything else is refused.** The
+same rules as SIML (SIML D6, D7), so a text value can be copied between Fale code and a manifest unchanged. Text is
+otherwise still literal (D7): nothing else inside it is replaced, and `"line one\nline two"` is refused rather than
+quietly meaning a backslash and an `n`. Claude proposed matching SIML; the owner chose: "yea". (Owner, 2026-11-14)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until

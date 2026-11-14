@@ -43,7 +43,8 @@ greet("Tankun")                    // ( ) runs it
 
 ## 1.4 Text
 
-Text inside `"..."` is always literal: nothing inside it is replaced (D7). Text and values are joined by writing them
+Text inside `"..."` is always literal: nothing inside it is replaced (D7), except that `\"` is a quote and `\\` is a
+backslash. A backslash before anything else is refused, the same as in SIML (D55). Text and values are joined by writing them
 side by side:
 
 ```
