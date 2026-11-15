@@ -759,6 +759,25 @@ This begins the redesign of building that will replace D61. The owner said: "It'
 AOT -> ran with Fale's VM. It should be optimized from the start: pararell, concurent, cached, etc". (Owner,
 2026-11-15)
 
+**D63. The VM verifies bytecode as it arrives, and nothing runs unverified.** Since bytecode is shipped (D62), a file
+could come from a broken or hacked compiler, or be edited by hand. The VM checks it while it's still downloading or
+being read, so the program starts as soon as the last byte arrives, like WebAssembly's streaming compilation. Each
+procedure is verified on its own, in parallel. A file that passed is remembered by its fingerprint (a hash of its
+contents) in the VM's own cache, never by a note inside the file, so loading it again skips verification. A bad
+file is refused before anything runs. To make streaming possible, the bytecode format puts declarations first:
+every procedure's name and types, the `one_of`s and `tagged_union`s, and the permissions it needs, then the bodies.
+Claude proposed verifying over trusting (Lua trusts, and warns against untrusted bytecode); the owner asked "It
+verifies in background? Pararell, concurent, cached, etc?" and explained: "I meant start running when the file
+finishes downloading". (Owner, 2026-11-15)
+
+**D64. The verifier is written in Zig, fuzzed hard, and cross-checked by the oracle.** From day one it's fed millions
+of mangled bytecode files, looking for crashes and for anything that slips through, and the oracle has its own
+verifier in OCaml so the two judge the same files and any disagreement is a bug (D37). Moving the verifier to SPARK
+stays an option for later, once the type rules settle and if Fale runs untrusted code at scale. The owner asked
+"Should we make that part in SPARK Platinum?", then said "Even at Silver and Gold, it took pretty long to almost
+finish Lua, though. It took around 3-4 days, which is very long"; Claude proposed Zig with fuzzing and oracle
+cross-checks first; the owner chose: "yeah". (Owner, 2026-11-15)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -786,4 +805,4 @@ AOT -> ran with Fale's VM. It should be optimized from the start: pararell, conc
 - Threads and running things in parallel. The concurrent GC (D20) is built for it.
 - Build modes (D61): their names, how a program picks one, and what the unchecked mode does with overflow, positions
   and division by zero.
-- The bytecode file: its format, extension, versioning, and what the VM checks when loading one (D62).
+- The bytecode file: its exact format, extension and versioning (D62, D63).
