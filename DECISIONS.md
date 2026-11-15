@@ -752,6 +752,13 @@ overflow, positions and division by zero aren't decided. Jernal's modes (Jernal 
 The owner said "You choose build mode, bro. It's progressive, remember? So, we have a default", then, asked about a
 mode without checks: "And yes, I do. But hosts can ban it". (Owner, 2026-11-14)
 
+**D62. Bytecode is something you ship.** Fale is compiled ahead of time to a bytecode file, and that file is run by
+Fale's VM, without the source, standalone or embedded (D51). The build is optimized from the start: files are checked
+and compiled in parallel and concurrently, and results are cached, so only what changed is redone (like rule 13).
+This begins the redesign of building that will replace D61. The owner said: "It's a thing you ship. So, basically:
+AOT -> ran with Fale's VM. It should be optimized from the start: pararell, concurent, cached, etc". (Owner,
+2026-11-15)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
@@ -779,3 +786,4 @@ mode without checks: "And yes, I do. But hosts can ban it". (Owner, 2026-11-14)
 - Threads and running things in parallel. The concurrent GC (D20) is built for it.
 - Build modes (D61): their names, how a program picks one, and what the unchecked mode does with overflow, positions
   and division by zero.
+- The bytecode file: its format, extension, versioning, and what the VM checks when loading one (D62).
