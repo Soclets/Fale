@@ -3,6 +3,7 @@
 **Speak!**
 
 Express yourself in a beginner-friendly but clear way.
+Fucking abandoned
 
 Fale ("speak!" in Portuguese) is a readable programming language: normal, everyday names, but clearer than Python.
 Words go where a symbol would be a guess, and the symbols everyone knows from school stay. It runs on a VM written in
