@@ -45,7 +45,12 @@ runs unverified; a file that passed is remembered by its fingerprint in the VM's
 declarations before bodies, so verification can stream. The verifier is fuzzed and cross-checked against the
 oracle's (D64).
 
-## 7.8 Build modes
+## 7.8 Commands
+
+`fale new` makes a new project whose manifest allows nothing; `fale run` compiles to bytecode, then runs it;
+`fale build` only builds; `fale test` runs the tests; `fale check` only checks (D65).
+
+## 7.9 Build modes
 
 `fale run main.fale` checks a program and runs it with every check on; that's the default (D61). Beside it: a mode that
 spends longer optimizing, with the same checks and results; a mode without runtime checks, which an embedding host can

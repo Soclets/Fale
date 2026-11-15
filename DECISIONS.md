@@ -778,6 +778,20 @@ stays an option for later, once the type rules settle and if Fale runs untrusted
 finish Lua, though. It took around 3-4 days, which is very long"; Claude proposed Zig with fuzzing and oracle
 cross-checks first; the owner chose: "yeah". (Owner, 2026-11-15)
 
+**D65. Five commands: `new`, `run`, `build`, `test`, `check`.**
+
+```
+fale new      // makes a new project, with nothing allowed
+fale run      // compiles to bytecode first, then runs it
+fale build    // builds only: makes the bytecode file you ship (D62)
+fale test     // runs the project's tests
+fale check    // checks only
+```
+
+A new project's manifest allows nothing, so even the terminal has to be allowed before Hello, World! runs. This
+replaces D50's "made with the terminal already allowed"; the error for using `show_in_text` without it points at the
+manifest. The owner wrote the list. (Owner, 2026-11-15)
+
 ## Open
 
 - What do `<` and `>` do with Text? Most languages compare letter codes, so `"Zebra" < "apple"` is true. Waits until
